@@ -4,6 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Projects/OtherProjects/EmiratesAuctionsWeatherApp/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Projects/OtherProjects/EmiratesAuctionsWeatherApp/app/src/main/res/layout/empty_view_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/Projects/OtherProjects/EmiratesAuctionsWeatherApp/app/src/main/res/layout/item_venue.xml" value="0.20416666666666666" />
+        <entry key="..\:/Projects/OtherProjects/EmiratesAuctionsWeatherApp/app/src/main/res/layout/item_weather_log.xml" value="0.20416666666666666" />
+        <entry key="..\:/Projects/OtherProjects/EmiratesAuctionsWeatherApp/app/src/main/res/layout/item_weather_log_shimmer_placeholder.xml" value="0.18" />
+        <entry key="..\:/Projects/OtherProjects/EmiratesAuctionsWeatherApp/app/src/main/res/layout/weather_log_list_shimmer_layout.xml" value="0.1" />
       </map>
     </option>
   </component>

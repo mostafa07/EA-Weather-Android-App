@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitServiceBuilder {
 
-    private const val FOURSQUARE_BASE_URL = "https://api.openweathermap.org/data/2.5/"
+    private const val OPEN_WEATHER_MAPS_BASE_URL = "https://api.openweathermap.org/data/2.5/"
 
     fun <S> buildService(serviceType: Class<S>): S {
         val loggingInterceptor = HttpLoggingInterceptor { Timber.d(it) }
@@ -24,7 +24,7 @@ object RetrofitServiceBuilder {
             .addInterceptor(loggingInterceptor)
 
         return Retrofit.Builder()
-            .baseUrl(FOURSQUARE_BASE_URL)
+            .baseUrl(OPEN_WEATHER_MAPS_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .client(sOkHttpClientBuilder.build())

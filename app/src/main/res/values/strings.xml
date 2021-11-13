@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">EmiratesAuctionsWeatherApp</string>
+    <string name="app_name">Weather App</string>
+
+    <string name="no_data_available">No Data Available</string>
+
+    <string name="error_operation_failed">Operation Failed</string>
 </resources>

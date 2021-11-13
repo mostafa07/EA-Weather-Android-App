@@ -1,6 +1,7 @@
 package com.example.emiratesauctionsweatherapp.data.repository
 
 import android.content.Context
+import com.example.emiratesauctionsweatherapp.BuildConfig
 import com.example.emiratesauctionsweatherapp.data.model.domain.WeatherLog
 import com.example.emiratesauctionsweatherapp.webservice.CurrentWeatherWebService
 import com.example.emiratesauctionsweatherapp.webservice.builder.RetrofitServiceBuilder
@@ -29,10 +30,14 @@ class WeatherRepository(context: Context) {
     }
 
     fun getWeatherLogs(
-        latitude: Double,
-        longitude: Double
+        latitude: Number,
+        longitude: Number
     ): Observable<WeatherLog> {
-        return mCurrentWeatherWebService.getCurrentWeather(latitude, longitude)
+        return mCurrentWeatherWebService.getCurrentWeather(
+            latitude,
+            longitude,
+            BuildConfig.OPEN_WEATHER_MAP_API_KEY
+        )
             .map {
                 WeatherLog(
                     id = it.id,
