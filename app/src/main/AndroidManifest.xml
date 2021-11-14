@@ -15,6 +15,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EmiratesAuctionsWeatherApp">
 
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <service
+            android:name=".service.location.ForegroundOnlyLocationService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true">

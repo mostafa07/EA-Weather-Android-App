@@ -37,6 +37,12 @@
 
             <include layout="@layout/item_weather_log_shimmer_placeholder" />
 
+            <include layout="@layout/item_weather_log_shimmer_placeholder" />
+
+            <include layout="@layout/item_weather_log_shimmer_placeholder" />
+
+            <include layout="@layout/item_weather_log_shimmer_placeholder" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </com.facebook.shimmer.ShimmerFrameLayout>

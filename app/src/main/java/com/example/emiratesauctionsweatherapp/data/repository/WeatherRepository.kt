@@ -34,9 +34,10 @@ class WeatherRepository(context: Context) {
         longitude: Number
     ): Observable<WeatherLog> {
         return mCurrentWeatherWebService.getCurrentWeather(
-            latitude,
-            longitude,
-            BuildConfig.OPEN_WEATHER_MAP_API_KEY
+            latitude = latitude.toInt(),
+            longitude = longitude.toInt(),
+            units = "metric",
+            appId = BuildConfig.OPEN_WEATHER_MAP_API_KEY
         )
             .map {
                 WeatherLog(

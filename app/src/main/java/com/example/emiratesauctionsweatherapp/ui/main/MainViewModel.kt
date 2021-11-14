@@ -34,12 +34,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     init {
         _isContentLoading.value = true
         _weatherLogsList.value = mutableListOf()
-        retrieveWeatherForCoordinates(30, 30)
+//        retrieveWeatherForCoordinates(30, 30)
     }
 
 
     fun retrieveWeatherForCoordinates(latitude: Number, longitude: Number) {
-        Timber.d("retrieveVenuesList")
+        Timber.d("retrieveWeatherForCoordinates`")
 
         showLoading()
         WeatherRepository.getInstance(getApplication())
