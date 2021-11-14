@@ -4,10 +4,11 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import com.example.emiratesauctionsweatherapp.R
 import com.example.emiratesauctionsweatherapp.data.model.app.CustomMessage
-import com.example.emiratesauctionsweatherapp.data.model.domain.WeatherLog
-import com.example.emiratesauctionsweatherapp.data.repository.WeatherRepository
+import com.example.emiratesauctionsweatherapp.data.model.WeatherLog
+import com.example.emiratesauctionsweatherapp.data.repository.WeatherLogRepository
 import com.example.emiratesauctionsweatherapp.exception.BusinessException
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -15,8 +16,9 @@ import timber.log.Timber
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val _weatherLogsList: MutableLiveData<MutableList<WeatherLog>> = MutableLiveData()
-    val weatherLogsList: LiveData<MutableList<WeatherLog>>
+    private val _weatherLogsList: LiveData<List<WeatherLog>> =
+        WeatherLogRepository(getApplication()).allWeatherLogs.asLiveData()
+    val weatherLogsList: LiveData<List<WeatherLog>>
         get() = _weatherLogsList
 
     private val _successMessage: MutableLiveData<CustomMessage> = MutableLiveData()
@@ -33,8 +35,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         _isContentLoading.value = true
-        _weatherLogsList.value = mutableListOf()
-//        retrieveWeatherForCoordinates(30, 30)
+//        _weatherLogsList.value = mutableListOf()
     }
 
 
@@ -42,13 +43,16 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         Timber.d("retrieveWeatherForCoordinates`")
 
         showLoading()
-        WeatherRepository.getInstance(getApplication())
-            .getWeatherLogs(latitude, longitude)
+        WeatherLogRepository.getInstance(getApplication())
+            .retrieveWeatherLog(latitude, longitude)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ weatherLog ->
-                _weatherLogsList.value?.add(weatherLog)
-                _weatherLogsList.value = _weatherLogsList.value
+//                _weatherLogsList.value?.add(weatherLog)
+//                _weatherLogsList.value = _weatherLogsList.value
+
+                Timber.wtf(weatherLog.toString())
+
                 hideLoading()
             }) { throwable ->
                 setErrorMessage(throwable)

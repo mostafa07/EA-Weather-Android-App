@@ -9,6 +9,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.IBinder
 import android.provider.Settings
+import android.view.Menu
+import android.view.MenuItem
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -112,6 +114,20 @@ class MainActivity : AppCompatActivity() {
         super.onStop()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.item_save) {
+            subscribeToLocationUpdatesBasedOnMode()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
     private fun setupRecyclerView() {
         mWeatherLogAdapter = WeatherLogAdapter { weatherLog, _ ->
             // TODO add details screen and implement this onclick listener
@@ -133,11 +149,11 @@ class MainActivity : AppCompatActivity() {
         mMainViewModel.isContentLoading.observe(this) { isLoading ->
             mBinding.shimmerLayout.shimmerFrameLayout.showShimmer(isLoading)
 
-            if (isLoading) {
-                disableUserInteraction()
-            } else {
-                reEnableUserInteraction()
-            }
+//            if (isLoading) {
+//                disableUserInteraction()
+//            } else {
+//                reEnableUserInteraction()
+//            }
         }
 
         mMainViewModel.weatherLogsList.observe(this, {
@@ -239,16 +255,16 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun disableUserInteraction() {
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-        )
-    }
-
-    private fun reEnableUserInteraction() {
-        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-    }
+//    private fun disableUserInteraction() {
+//        window.setFlags(
+//            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+//            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+//        )
+//    }
+//
+//    private fun reEnableUserInteraction() {
+//        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+//    }
 
     private fun showSnackbar(message: CustomMessage, successFlag: Boolean) {
         val messageString = getString(message.messageResourceId, message.params)

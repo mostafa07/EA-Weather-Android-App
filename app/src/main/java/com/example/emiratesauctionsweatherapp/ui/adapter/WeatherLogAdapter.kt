@@ -2,7 +2,7 @@ package com.example.emiratesauctionsweatherapp.ui.adapter
 
 import com.example.emiratesauctionsweatherapp.BR
 import com.example.emiratesauctionsweatherapp.R
-import com.example.emiratesauctionsweatherapp.data.model.domain.WeatherLog
+import com.example.emiratesauctionsweatherapp.data.model.WeatherLog
 import com.example.emiratesauctionsweatherapp.databinding.ItemWeatherLogBinding
 import com.example.emiratesauctionsweatherapp.ui.adapter.base.BaseRecyclerViewAdapter
 
